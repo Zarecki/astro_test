@@ -27,3 +27,22 @@ def select_all():
 
     
     return facilities
+
+def select(id):
+    facility = None
+
+    sql = "SELECT * FROM facilities WHERE id = ?"
+    values = [id]
+    result = sql_runner(sql, values)[0]
+
+    if(result != None):
+        facility = Facility(result['center'], result['center_search_status'], result['facility'], result['record_date'], result['country'], result['contact'], result['phone'], result['latitude'], result['longitude'], result['human_address'], result['city'], result['state'], result['zipcode'], result['computed_region_bigw_e76g'], result['computed_region_cbhk_fwbd'], result['computed_region_nnqa_25f4'], result['occupied'], result['last_update'], result['status'], result['url'], result['id'])
+    
+    return facility
+
+def update(facility):
+    sql = "UPDATE facilities SET (center, center_search_status, facility, occupied, status, url, record_date, last_update, country, contact, phone, latitude, longitude, human_address, city, state, zipcode, computed_region_bigw_e76g, computed_region_cbhk_fwbd, computed_region_nnqa_25f4) = (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) WHERE id = ?"
+
+    values = [facility.center, facility.center_search_status, facility.facility, facility.occupied, facility.status, facility.url, facility.record_date, facility.last_update, facility.country, facility.contact, facility.phone, facility.latitude, facility.longitude, facility.human_address, facility.city, facility.state, facility.zipcode, facility.computed_region_bigw_e76g, facility.computed_region_cbhk_fwbd, facility.computed_region_nnqa_25f4, facility.id]
+
+    sql_runner(sql, values)
