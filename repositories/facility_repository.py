@@ -17,8 +17,9 @@ def save(facility):
 def select_all():
     facilities = []
 
-    sql = "SELECT * FROM facilities"
-    results = sql_runner(sql)
+    sql = "SELECT * FROM facilities WHERE status = ?"
+    values = ["Active"]
+    results = sql_runner(sql, values)
 
     for row in results:
         facility = Facility(row['center'], row['center_search_status'], row['facility'], row['record_date'], row['country'], row['contact'], row['phone'], row['latitude'], row['longitude'], row['human_address'], row['city'], row['state'], row['zipcode'], row['computed_region_bigw_e76g'], row['computed_region_cbhk_fwbd'], row['computed_region_nnqa_25f4'], row['occupied'], row['last_update'], row['status'], row['url'], row['id'])
