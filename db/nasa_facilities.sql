@@ -20,7 +20,7 @@ CREATE TABLE facilities (
     human_address VARCHAR,
     city VARCHAR,
     state VARCHAR,
-    zipcode INTEGER,
+    zipcode VARCHAR,
     computed_region_bigw_e76g INTEGER,
     computed_region_cbhk_fwbd INTEGER,
     computed_region_nnqa_25f4 INTEGER

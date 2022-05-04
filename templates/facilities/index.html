@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>All Facilities</h2>
+
+<table>
+    <tr>
+        <th>Facility</th>
+        <th></th>
+        <th>Center</th>
+    </tr>
+    {% for facility in facilities %}
+    <tr>
+        <td><a href="/facilities/{{ facility.id }}">{{ facility.facility }}</a></td>
+        <td>|</td>
+        <td>{{ facility.center }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}
