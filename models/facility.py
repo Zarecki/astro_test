@@ -1,4 +1,3 @@
-# consider - using descrtucturing syntax in parameters. Use standard form if no improved legibility
 
 class Facility:
     def __init__(self, center, center_search_status, facility, record_date, country, contact, phone, latitude, longitude, human_address, city, state, zipcode, computed_region_bigw_e76g, computed_region_cbhk_fwbd, computed_region_nnqa_25f4, occupied = None, last_update = None, status = None, url = None, id = None):

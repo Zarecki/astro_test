@@ -1,6 +1,7 @@
-from flask import Flask 
+from flask import Flask, jsonify 
+import json
 
-from helpers.fetch import fetch
+from helpers.helper_functions import fetch
 import repositories.facility_repository as facility_repository
 from models.facility import Facility
 
@@ -8,7 +9,6 @@ from models.facility import Facility
 app = Flask(__name__)
 
 data = fetch()
-print(data[0])
 
 for entry in data:
     facility = Facility(entry['center'], entry['center_search_status'], entry['facility'], entry['record_date'][:10], entry['country'], entry['contact'], entry['phone'], entry['location']['latitude'], entry['location']['longitude'], entry['location']['human_address'], entry['city'], entry['state'], entry['zipcode'], entry[':@computed_region_bigw_e76g'], entry[':@computed_region_cbhk_fwbd'], entry[':@computed_region_nnqa_25f4'])
@@ -28,9 +28,19 @@ for entry in data:
     facility_repository.save(facility)
 
 test = facility_repository.select_all()
-print(test)
-print(test[0])
+
+
+@app.route('/api/', methods=['GET'])
+def main_endpoint():
+    response = []
+
+    for entry in test:
+        response.append(entry.__dict__)
+
+    return jsonify(response)
 
 
 if __name__ == '__main__':
     app.run(debug=True)
+    with app.app_context():
+        main_endpoint()
