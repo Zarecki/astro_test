@@ -7,4 +7,9 @@ facilities_blueprint = Blueprint("facilities", __name__)
 @facilities_blueprint.route("/facilities")
 def facilities():
     facilities = facility_repository.select_all()
-    return render_template("facilities/index.html", facilities = facilities)
+    return render_template("/facilities/index.html", facilities = facilities)
+
+@facilities_blueprint.route("/facilities/<id>")
+def show(id):
+    facility = facility_repository.select(id)
+    return render_template("/facilities/show.html", facility = facility)
