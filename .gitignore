@@ -1,2 +1,6 @@
 __pycache__
 nasa_facilities.db
+bin
+lib
+include
+pyvenv.cfg
