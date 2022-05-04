@@ -23,6 +23,7 @@ def select_all():
     for row in results:
         facility = Facility(row['center'], row['center_search_status'], row['facility'], row['record_date'], row['country'], row['contact'], row['phone'], row['latitude'], row['longitude'], row['human_address'], row['city'], row['state'], row['zipcode'], row['computed_region_bigw_e76g'], row['computed_region_cbhk_fwbd'], row['computed_region_nnqa_25f4'], row['occupied'], row['last_update'], row['status'], row['url'], row['id'])
 
-        facilities.append(facilities)
+        facilities.append(facility)
 
+    
     return facilities
