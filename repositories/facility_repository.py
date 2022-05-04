@@ -27,3 +27,15 @@ def select_all():
 
     
     return facilities
+
+def select(id):
+    facility = None
+
+    sql = "SELECT * FROM facilities WHERE id = ?"
+    values = [id]
+    result = sql_runner(sql, values)[0]
+
+    if(result != None):
+        facility = Facility(result['center'], result['center_search_status'], result['facility'], result['record_date'], result['country'], result['contact'], result['phone'], result['latitude'], result['longitude'], result['human_address'], result['city'], result['state'], result['zipcode'], result['computed_region_bigw_e76g'], result['computed_region_cbhk_fwbd'], result['computed_region_nnqa_25f4'], result['occupied'], result['last_update'], result['status'], result['url'], result['id'])
+    
+    return facility
