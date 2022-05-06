@@ -1,5 +1,11 @@
 #!/bin/sh
 
+# # setup
+sudo apt update
+sudp apt-get update
+sudo apt-get install python3-pip
+sudo apt install sqlite3
+
 # # activating the python virtual environment
 pip3 install virtualenv
 echo virtual environment installed
@@ -19,7 +25,7 @@ echo pip installs finished
 
 # # create db
 sqlite3 db/nasa_facilities.db < db/nasa_facilities.sql
-
+echo db seeded
 
 # # runs schedule script
 # ./schedule_script.sh
