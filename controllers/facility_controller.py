@@ -2,6 +2,8 @@ from flask import Flask, Blueprint, render_template, request, redirect
 from models.facility import Facility
 import repositories.facility_repository as facility_repository
 
+# This file sets up the standard RESTful routes for index, show, edit, and update
+
 facilities_blueprint = Blueprint("facilities", __name__)
 
 @facilities_blueprint.route("/facilities", methods=["GET"])

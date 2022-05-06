@@ -1,5 +1,6 @@
 from flask import Flask
 import schedule
+import time
 from datetime import datetime
 from helpers.helper_functions import fetch, fetch_to_db, objects_to_json
 import repositories.facility_repository as facility_repository
@@ -10,8 +11,16 @@ app = Flask(__name__)
 
 app.register_blueprint(facilities_blueprint)
 
-# schedules a new fetch to be called each day
-schedule.every().day.at('23:50').do(fetch_to_db)
+# # schedules a new fetch to be called each day
+# # schedule.every().day.at('23:50').do(fetch_to_db)
+# schedule.every(1).minutes.do(fetch_to_db)
+
+# while True:
+ 
+#     # Checks whether a scheduled task
+#     # is pending to run or not
+#     schedule.run_pending()
+#     time.sleep(1)
 
 # fetching and saving to db on launch. No pun intended.
 fetch_to_db(True)
@@ -30,4 +39,5 @@ if __name__ == '__main__':
     app.run(debug=True)
     with app.app_context():
         main_endpoint()
+        
         
