@@ -20,12 +20,13 @@ def save_multiple_entries(entries, initial):
         return
     
     for entry in entries:
-        if(entry['record_date'] == datetime.today().strftime('%Y-%m-%d')):
+        if(entry.record_date == datetime.today().strftime('%Y-%m-%d')):
             facility_repository.save(entry)
             
 
 # creates and return python objects from the fetched data
 def fetch_to_db(initial = False):
+    print("fetched!")
     data = fetch()
 
     facility_objects = []

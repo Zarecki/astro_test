@@ -1,7 +1,9 @@
 from db.run_sql import sql_runner
-
 from models.facility import Facility
 
+# This file handles the construction of sql queries using prepared statements
+
+# save a Facility object to the DB
 def save(facility):
     sql = "INSERT INTO facilities (center, center_search_status, facility, occupied, status, url, record_date, last_update, country, contact, phone, latitude, longitude, human_address, city, state, zipcode, computed_region_bigw_e76g, computed_region_cbhk_fwbd, computed_region_nnqa_25f4) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING *"
 
@@ -14,6 +16,7 @@ def save(facility):
     facility.id = id
     return facility
 
+# return all entried from the facilities table and instantiate Facility objects from the row data
 def select_all():
     facilities = []
 
@@ -29,6 +32,8 @@ def select_all():
     
     return facilities
 
+
+# Return a single entry from the DB by ID, instantiating a Facility object from the data
 def select(id):
     facility = None
 
@@ -41,6 +46,7 @@ def select(id):
     
     return facility
 
+# Updates the data of a specific DB entry, found by ID
 def update(facility):
     sql = "UPDATE facilities SET (center, center_search_status, facility, occupied, status, url, record_date, last_update, country, contact, phone, latitude, longitude, human_address, city, state, zipcode, computed_region_bigw_e76g, computed_region_cbhk_fwbd, computed_region_nnqa_25f4) = (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) WHERE id = ?"
 

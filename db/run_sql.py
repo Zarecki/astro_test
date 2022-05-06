@@ -1,6 +1,8 @@
 import sqlite3
 import os
 
+# This file sets up our connection to the db, and handles the running of sql queries
+
 def db_connection():
     path = os.path.dirname(os.path.abspath(__file__))
     db = os.path.join(path, "./nasa_facilities.db")
